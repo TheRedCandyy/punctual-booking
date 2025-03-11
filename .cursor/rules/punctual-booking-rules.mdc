@@ -1,0 +1,40 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# Rules for Punctual Booking SaaS Landing Page
+
+- This app is the Landing page/Brand page of my SaaS, named "Punctual Booking", that allows barbershops to manage their bookings, clients, and business operations efficiently. Barbershops can sign up, subscribe to a plan, and receive a dedicated subdomain (e.g., mybarbershop.yourbrand.com), where their customers can book appointments.
+
+## Project Structure & Tech Stack
+
+Frontend Framework: Use Next.js or React (with TypeScript if possible) for SEO-friendly server-side rendering.
+Styling: Use Tailwind CSS or a component library that aligns with our design system.
+Routing: Implement client-side routing with clear separation between the public landing page and the authenticated business app subdomains.
+Design & UX Guidelines
+
+Responsive Design: Ensure layouts are mobile-first and work seamlessly on desktops, tablets, and smartphones.
+Brand Consistency: Follow the established brand guidelines (colors, fonts, logo usage, and iconography) throughout the landing page.
+Clear CTAs: Include prominent call-to-action buttons (e.g., “Get Started,” “Start Free Trial”) in the hero section and pricing sections.
+User Journey: Structure the landing page to guide potential customers from awareness (features, testimonials) to conversion (pricing, signup).
+Functionality & Features
+
+Dynamic Subdomain Assignment: Integrate with the backend to automatically assign a subdomain upon successful registration and payment.
+Authentication Integration: Ensure that the signup and login forms use secure authentication flows (e.g., JWT tokens) with backend validation.
+Payment Integration: Set up Stripe (or an alternative) for subscription management, ensuring that the payment flow is smooth and secure.
+SEO Optimization: Use meta tags, semantic HTML, and structured data to improve search engine visibility.
+Analytics & Monitoring: Integrate with tools like Google Analytics to track user behavior and conversion metrics.
+Performance & Security
+
+Optimization: Optimize images and assets (using lazy loading and compression) for faster page loads.
+Caching: Utilize CDN (via Vercel or Cloudflare) for static assets and implement server-side caching where necessary.
+Security Best Practices: Enforce HTTPS, secure API endpoints, and properly manage environment variables for sensitive information.
+Accessibility: Follow WCAG guidelines to ensure the page is accessible (alt text, proper ARIA roles, keyboard navigability).
+Development Workflow & CI/CD
+
+Version Control: Use Git with clear commit messages, and enforce code reviews via Pull Requests on GitHub or GitLab.
+Automated Testing: Write unit tests for key UI components and end-to-end tests (e.g., with Cypress) for critical flows.
+Continuous Deployment: Set up a CI/CD pipeline (e.g., using GitHub Actions or Vercel’s built-in deployments) to automatically deploy changes to staging/production.
+Documentation: Maintain a comprehensive README with setup, deployment, and contribution guidelines; include in-code documentation where necessary.
