@@ -5,9 +5,16 @@ import { Button } from '../components/ui/button';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
 import placeholderImage from '../assets/images/landing-page-placeholder.webp';
+import calendarImage from '../assets/images/calendar-image-placeholder.png';
+import '../styles/cards.css';
+import { Toggle } from '../components/ui/toggle';
+import { useState } from 'react';
+import { Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function LandingPage() {
   const { t } = useTranslation();
+  const [isYearly, setIsYearly] = useState(false);
   
   // SEO metadata for this page
   const seoData = {
@@ -55,6 +62,91 @@ export function LandingPage() {
     },
   ];
 
+  // Example testimonials data
+  const testimonialsData = [
+    {
+      quote: t('testimonials.quote1', '"Punctual Booking has transformed how we manage appointments. Our no-show rate has dropped by 60%!"'),
+      name: t('testimonials.name1', 'MARIA SANTOS'),
+      position: t('testimonials.position1', 'Salon Owner'),
+    },
+    {
+      quote: t('testimonials.quote2', '"The platform is intuitive and easy to use. Our team loves it!"'),
+      name: t('testimonials.name2', 'JOHN DOE'),
+      position: t('testimonials.position2', 'Business Manager'),
+    },
+    {
+      quote: t('testimonials.quote3', '"Punctual Booking has transformed how we manage appointments. Our no-show rate has dropped by 60%!"'),
+      name: t('testimonials.name3', 'MARIA SANTOS'),
+      position: t('testimonials.position3', 'Salon Owner'),
+    },
+    {
+      quote: t('testimonials.quote4', '"Punctual Booking has transformed how we manage appointments. Our no-show rate has dropped by 60%!"'),
+      name: t('testimonials.name4', 'MARIA SANTOS'),
+      position: t('testimonials.position4', 'Salon Owner'),
+    },
+    {
+      quote: t('testimonials.quote5', '"The automated reminders and easy rescheduling have made our clinic much more efficient."'),
+      name: t('testimonials.name5', 'DAVID SILVA'),
+      position: t('testimonials.position5', 'Medical Director'),
+    },
+    {
+      quote: t('testimonials.quote6', '"Best investment we made for our business. The customer support is exceptional!"'),
+      name: t('testimonials.name6', 'ANA COSTA'),
+      position: t('testimonials.position6', 'Restaurant Owner'),
+    }
+    // Add more testimonials as needed
+  ];
+
+  const pricingPlans = [
+    {
+      name: t('pricing.starter.title', 'Starter'),
+      price: {
+        monthly: 29,
+        yearly: 24,
+      },
+      description: t('pricing.starter.description', 'Perfect for small businesses'),
+      features: [
+        t('pricing.starter.features.0', 'Up to 50 appointments/month'),
+        t('pricing.starter.features.1', 'Basic email support'),
+        t('pricing.starter.features.2', 'Calendar integration'),
+      ],
+      cta: t('pricing.starter.cta', 'Get Started'),
+      highlighted: false,
+    },
+    {
+      name: t('pricing.professional.title', 'Professional'),
+      price: {
+        monthly: 79,
+        yearly: 64,
+      },
+      description: t('pricing.professional.description', 'Ideal for growing businesses'),
+      features: [
+        t('pricing.professional.features.0', 'Unlimited appointments'),
+        t('pricing.professional.features.1', 'Priority support'),
+        t('pricing.professional.features.2', 'Advanced analytics'),
+        t('pricing.professional.features.3', 'Team management'),
+      ],
+      cta: t('pricing.professional.cta', 'Start Free Trial'),
+      highlighted: true,
+    },
+    {
+      name: t('pricing.enterprise.title', 'Enterprise'),
+      price: {
+        monthly: 199,
+        yearly: 159,
+      },
+      description: t('pricing.enterprise.description', 'For large organizations'),
+      features: [
+        t('pricing.enterprise.features.0', 'Custom integrations'),
+        t('pricing.enterprise.features.1', 'Dedicated support'),
+        t('pricing.enterprise.features.2', 'Advanced security'),
+        t('pricing.enterprise.features.3', 'API access'),
+      ],
+      cta: t('pricing.enterprise.cta', 'Contact Sales'),
+      highlighted: false,
+    },
+  ];
+
   return (
     <>
       {/* SEO Components */}
@@ -82,9 +174,9 @@ export function LandingPage() {
                   <Button 
                     size="lg" 
                     asChild 
-                    className="font-secondary bg-primary hover:bg-primary/90 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300  hover:animate-none"
+                    className="font-bold shadow-lg hover:shadow-xl"
                   >
-                    <a href="#signup">{t('hero.cta.trial', 'Start Free Trial')}</a>
+                    <Link to="/register">{t('hero.cta.trial', 'Start Free Trial')}</Link>
                   </Button>
                   <Button size="lg" variant="outline" asChild className="font-secondary">
                     <a href="#demo">{t('hero.cta.demo', 'Watch Demo')}</a>
@@ -108,8 +200,27 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section id="features" className="py-20 bg-background">
+        <div className="relative py-10">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background pointer-events-none"></div>
           <div className="container px-4 md:px-6 mx-auto">
+            <div className="flex justify-center">
+              <div className="bg-white/30 backdrop-blur-md rounded-lg shadow-lg overflow-hidden max-w-[1000px]">
+                <img 
+                  src={calendarImage} 
+                  alt="Calendar interface" 
+                  className="w-full h-auto object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section id="features" className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background pointer-events-none" />
+          <div className="container px-4 md:px-6 mx-auto relative">
             <div className="flex flex-col items-center text-center space-y-4 mb-12">
               <h2 className="font-primary text-3xl md:text-4xl tracking-tight">{t('features.title', 'KEY FEATURES')}</h2>
               <p className="font-secondary text-muted-foreground max-w-[600px]">
@@ -117,191 +228,141 @@ export function LandingPage() {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div id="online-booking" className="flex flex-col items-center text-center p-6 bg-card rounded-lg shadow-sm border">
-                <h3 className="font-primary text-xl mb-2">{t('features.onlineBooking.title', 'ONLINE BOOKING')}</h3>
+              <div className="glassmorphism-card p-8 rounded-xl">
+                <h3 className="font-primary text-xl mb-4">{t('features.onlineBooking.title', 'ONLINE BOOKING')}</h3>
                 <p className="font-secondary text-muted-foreground">{t('features.onlineBooking.description', 'Allow clients to book appointments 24/7 from any device')}</p>
               </div>
-              <div id="reminders" className="flex flex-col items-center text-center p-6 bg-card rounded-lg shadow-sm border">
-                <h3 className="font-primary text-xl mb-2">{t('features.reminders.title', 'AUTOMATED REMINDERS')}</h3>
+              <div className="glassmorphism-card p-8 rounded-xl">
+                <h3 className="font-primary text-xl mb-4">{t('features.reminders.title', 'AUTOMATED REMINDERS')}</h3>
                 <p className="font-secondary text-muted-foreground">{t('features.reminders.description', 'Reduce no-shows with SMS and email reminders')}</p>
               </div>
-              <div id="team" className="flex flex-col items-center text-center p-6 bg-card rounded-lg shadow-sm border">
-                <h3 className="font-primary text-xl mb-2">{t('features.team.title', 'TEAM MANAGEMENT')}</h3>
+              <div className="glassmorphism-card p-8 rounded-xl">
+                <h3 className="font-primary text-xl mb-4">{t('features.team.title', 'TEAM MANAGEMENT')}</h3>
                 <p className="font-secondary text-muted-foreground">{t('features.team.description', 'Manage staff schedules and availability')}</p>
               </div>
-              <div id="analytics" className="flex flex-col items-center text-center p-6 bg-card rounded-lg shadow-sm border">
-                <h3 className="font-primary text-xl mb-2">{t('features.analytics.title', 'ANALYTICS')}</h3>
+              <div className="glassmorphism-card p-8 rounded-xl">
+                <h3 className="font-primary text-xl mb-4">{t('features.analytics.title', 'ANALYTICS')}</h3>
                 <p className="font-secondary text-muted-foreground">{t('features.analytics.description', 'Track performance with detailed reports')}</p>
               </div>
-              <div id="customization" className="flex flex-col items-center text-center p-6 bg-card rounded-lg shadow-sm border">
-                <h3 className="font-primary text-xl mb-2">{t('features.customization.title', 'CUSTOMIZATION')}</h3>
+              <div className="glassmorphism-card p-8 rounded-xl">
+                <h3 className="font-primary text-xl mb-4">{t('features.customization.title', 'CUSTOMIZATION')}</h3>
                 <p className="font-secondary text-muted-foreground">{t('features.customization.description', 'Tailor the platform to your business needs')}</p>
               </div>
-              <div className="flex flex-col items-center text-center p-6 bg-card rounded-lg shadow-sm border">
-                <h3 className="font-primary text-xl mb-2">{t('features.payment.title', 'PAYMENT PROCESSING')}</h3>
+              <div className="glassmorphism-card p-8 rounded-xl">
+                <h3 className="font-primary text-xl mb-4">{t('features.payment.title', 'PAYMENT PROCESSING')}</h3>
                 <p className="font-secondary text-muted-foreground">{t('features.payment.description', 'Accept payments and deposits at time of booking')}</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="testimonials py-20 bg-secondary/20 relative">
-          <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-b from-transparent to-background pointer-events-none"></div>
-          <div className="container px-4 md:px-6 mx-auto">
+        <section className="testimonials py-20 relative overflow-hidden">
+          <div className="container px-4 md:px-6 mx-auto relative">
             <div className="flex flex-col items-center text-center space-y-4 mb-12">
               <h2 className="font-primary text-3xl md:text-4xl tracking-tight">{t('testimonials.title', 'TESTIMONIALS')}</h2>
               <p className="font-secondary text-muted-foreground max-w-[600px]">
                 {t('testimonials.subtitle', 'Trusted by businesses worldwide')}
               </p>
             </div>
-            <div className="max-w-3xl mx-auto">
-              <div className="bg-card p-8 rounded-lg shadow-sm border text-center">
-                <p className="font-secondary text-lg italic mb-4">
-                  {t('testimonials.quote', '"Punctual Booking has transformed how we manage appointments. Our no-show rate has dropped by 60%!"')}
-                </p>
-                <div className="flex items-center justify-center">
-                  <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
-                    MS
-                  </div>
-                  <div className="ml-4">
-                    <p className="font-primary">{t('testimonials.name', 'MARIA SANTOS')}</p>
-                    <p className="font-secondary text-sm text-muted-foreground">{t('testimonials.position', 'Salon Owner')}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {testimonialsData.map((testimonial, index) => (
+                <div key={index} className="glassmorphism-card p-8 rounded-xl">
+                  <p className="font-secondary text-lg italic mb-6">
+                    {testimonial.quote}
+                  </p>
+                  <div className="flex items-center">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                      {testimonial.name.split(' ').map(n => n[0]).join('')}
+                    </div>
+                    <div className="ml-4">
+                      <p className="font-primary text-sm">{testimonial.name}</p>
+                      <p className="font-secondary text-sm text-muted-foreground">{testimonial.position}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
         <section id="pricing" className="py-20 bg-background">
-          <div className="container px-4 md:px-6 mx-auto">
-            <div className="flex flex-col items-center text-center space-y-4 mb-12">
-              <h2 className="font-primary text-3xl md:text-4xl tracking-tight">{t('pricing.title', 'PRICING')}</h2>
-              <p className="font-secondary text-muted-foreground max-w-[600px]">
-                {t('pricing.subtitle', 'Choose the plan that works best for your business')}
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-primary mb-4">{t('pricing.title', 'Simple, Transparent Pricing')}</h2>
+              <p className="text-xl text-muted-foreground font-secondary">
+                {t('pricing.subtitle', 'Choose the plan that best fits your needs')}
               </p>
             </div>
+
+            <div className="flex justify-center items-center gap-4 mb-12">
+              <span className={`text-sm ${!isYearly ? 'text-primary font-bold' : 'text-muted-foreground'}`}>
+                {t('pricing.monthly', 'Monthly')}
+              </span>
+              <Toggle
+                pressed={isYearly}
+                onPressedChange={setIsYearly}
+                className="relative inline-flex h-6 w-11 items-center justify-center rounded-full bg-primary/20 data-[state=on]:bg-primary transition-colors"
+              >
+                <span
+                  className={`absolute h-5 w-5 rounded-full bg-white shadow-lg transition-transform duration-200 ease-in-out ${
+                    isYearly ? 'translate-x-[40%]' : '-translate-x-[40%]'
+                  }`}
+                />
+              </Toggle>
+              <span className={`text-sm ${isYearly ? 'text-primary font-bold' : 'text-muted-foreground'}`}>
+                {t('pricing.yearly', 'Yearly')}
+              </span>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex flex-col p-6 bg-card rounded-lg shadow-sm border text-center">
-                <h3 className="font-primary text-xl mb-2">{t('pricing.starter.title', 'STARTER')}</h3>
-                <p className="text-3xl font-bold mb-4">€19.99<span className="font-secondary text-sm font-normal text-muted-foreground">/month</span></p>
-                <ul className="space-y-2 mb-6 flex-grow font-secondary">
-                  <li className="flex items-center justify-center">
-                    <svg className="w-4 h-4 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    {t('pricing.starter.feature1', 'Up to 3 staff members')}
-                  </li>
-                  <li className="flex items-center justify-center">
-                    <svg className="w-4 h-4 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    {t('pricing.starter.feature2', '100 bookings/month')}
-                  </li>
-                  <li className="flex items-center justify-center">
-                    <svg className="w-4 h-4 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    {t('pricing.starter.feature3', 'Email reminders')}
-                  </li>
-                  <li className="flex items-center justify-center">
-                    <svg className="w-4 h-4 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    {t('pricing.starter.feature4', 'Basic reporting')}
-                  </li>
-                </ul>
-                <Button asChild className="font-secondary">
-                  <a href="#signup">Get Started</a>
-                </Button>
-              </div>
-              <div className="flex flex-col p-6 bg-primary text-primary-foreground rounded-lg shadow-sm border-2 border-primary relative text-center">
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium font-secondary">
-                  Most Popular
+              {pricingPlans.map((plan) => (
+                <div
+                  key={plan.name}
+                  className={`glassmorphism-card p-8 rounded-lg flex flex-col ${
+                    plan.highlighted ? 'border-2 border-primary' : ''
+                  }`}
+                >
+                  <div>
+                    <h3 className="text-2xl font-primary mb-2">{plan.name}</h3>
+                    <div className="mb-4">
+                      <div className="flex items-center justify-center gap-2">
+                        <span className="text-4xl font-bold">
+                          ${isYearly ? plan.price.yearly : plan.price.monthly}
+                        </span>
+                        <span className="text-muted-foreground">/{t('pricing.perMonth', 'month')}</span>
+                        {isYearly && (
+                          <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
+                            {t('pricing.save', 'Save 20%')}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground mb-6">{plan.description}</p>
+                    <ul className="space-y-4 mb-8">
+                      {plan.features.map((feature) => (
+                        <li key={feature} className="flex items-center gap-2">
+                          <Check className="h-5 w-5 text-primary" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Button
+                    asChild
+                    variant={plan.highlighted ? 'default' : 'secondary'}
+                    className="w-full mt-auto"
+                  >
+                    <Link to="/register">{plan.cta}</Link>
+                  </Button>
                 </div>
-                <h3 className="font-primary text-xl mb-2">{t('pricing.professional.title', 'PROFESSIONAL')}</h3>
-                <p className="text-3xl font-bold mb-4">€39.99<span className="font-secondary text-sm font-normal opacity-80">/month</span></p>
-                <ul className="space-y-2 mb-6 flex-grow font-secondary">
-                  <li className="flex items-center justify-center">
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    {t('pricing.professional.feature1', 'Up to 10 staff members')}
-                  </li>
-                  <li className="flex items-center justify-center">
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    {t('pricing.professional.feature2', 'Unlimited bookings')}
-                  </li>
-                  <li className="flex items-center justify-center">
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    {t('pricing.professional.feature3', 'SMS & email reminders')}
-                  </li>
-                  <li className="flex items-center justify-center">
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    {t('pricing.professional.feature4', 'Advanced reporting')}
-                  </li>
-                  <li className="flex items-center justify-center">
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    {t('pricing.professional.feature5', 'Payment processing')}
-                  </li>
-                </ul>
-                <Button variant="secondary" asChild className="font-secondary">
-                  <a href="#signup">Get Started</a>
-                </Button>
-              </div>
-              <div className="flex flex-col p-6 bg-card rounded-lg shadow-sm border text-center">
-                <h3 className="font-primary text-xl mb-2">{t('pricing.enterprise.title', 'ENTERPRISE')}</h3>
-                <p className="text-3xl font-bold mb-4">€99.99<span className="font-secondary text-sm font-normal text-muted-foreground">/month</span></p>
-                <ul className="space-y-2 mb-6 flex-grow font-secondary">
-                  <li className="flex items-center justify-center">
-                    <svg className="w-4 h-4 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    {t('pricing.enterprise.feature1', 'Unlimited staff')}
-                  </li>
-                  <li className="flex items-center justify-center">
-                    <svg className="w-4 h-4 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    {t('pricing.enterprise.feature2', 'Unlimited bookings')}
-                  </li>
-                  <li className="flex items-center justify-center">
-                    <svg className="w-4 h-4 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    {t('pricing.enterprise.feature3', 'Custom branding')}
-                  </li>
-                  <li className="flex items-center justify-center">
-                    <svg className="w-4 h-4 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    {t('pricing.enterprise.feature4', 'API access')}
-                  </li>
-                  <li className="flex items-center justify-center">
-                    <svg className="w-4 h-4 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    {t('pricing.enterprise.feature5', 'Dedicated support')}
-                  </li>
-                </ul>
-                <Button variant="outline" asChild className="font-secondary">
-                  <a href="#contact">Contact Sales</a>
-                </Button>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section id="faq" className="py-20 bg-secondary/20">
-          <div className="container px-4 md:px-6 mx-auto">
+        <section id="faq" className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background pointer-events-none" />
+          <div className="container px-4 md:px-6 mx-auto relative">
             <div className="flex flex-col items-center text-center space-y-4 mb-12">
               <h2 className="font-primary text-3xl md:text-4xl tracking-tight">{t('faq.title', 'FAQ')}</h2>
               <p className="font-secondary text-muted-foreground max-w-[600px]">
@@ -310,8 +371,8 @@ export function LandingPage() {
             </div>
             <div className="max-w-3xl mx-auto space-y-6">
               {faqData.map((faq, index) => (
-                <div key={index} className="bg-card p-6 rounded-lg shadow-sm border text-center">
-                  <h3 className="font-primary text-xl mb-2">{faq.question.toUpperCase()}</h3>
+                <div key={index} className="glassmorphism-card p-8 rounded-xl">
+                  <h3 className="font-primary text-xl mb-4">{faq.question}</h3>
                   <p className="font-secondary text-muted-foreground">{faq.answer}</p>
                 </div>
               ))}
@@ -338,22 +399,21 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section id="signup" className="py-20 bg-primary text-primary-foreground">
+        <section id="signup" className="py-20 bg-primary/10 dark:bg-primary/5">
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center text-center space-y-4 mb-8">
               <h2 className="font-primary text-3xl md:text-4xl tracking-tight">{t('cta.title', 'READY TO GET STARTED?')}</h2>
-              <p className="font-secondary max-w-[600px] opacity-90">
+              <p className="font-secondary text-muted-foreground max-w-[600px]">
                 {t('cta.subtitle', 'Join thousands of businesses that trust Punctual Booking for their scheduling needs')}
               </p>
             </div>
             <div className="flex justify-center">
               <Button 
                 size="lg" 
-                variant="secondary" 
                 asChild 
-                className="font-secondary bg-white hover:bg-white/90 text-primary font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:animate-none"
+                className="font-secondary bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <a href="#signup">{t('cta.button', 'Start Your 14-Day Free Trial')}</a>
+                <Link to="/register">{t('cta.button', 'Start Your 14-Day Free Trial')}</Link>
               </Button>
             </div>
           </div>
