@@ -15,6 +15,7 @@
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-toggle": "^1.1.2",
     "@tailwindcss/vite": "^4.0.12",
+    "@vercel/speed-insights": "^1.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "i18next": "^24.2.3",
@@ -31,7 +32,7 @@
   "devDependencies": {
     "@eslint/js": "^9.21.0",
     "@types/node": "^22.13.10",
-    "@types/react": "^19.0.10",
+    "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.21.0",
@@ -41,5 +42,6 @@
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"
-  }
+  },
+  "packageManager": "yarn@3.3.1+sha512.e355f587284d06d2c0c1c2259c68746aa1f1f6cdeedefce543cec206709beeb7951c0a27cdbfb7b5736a576854829af9c660bbe82052192c49f108a546994b71"
 }
