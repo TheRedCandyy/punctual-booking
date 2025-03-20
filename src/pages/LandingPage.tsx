@@ -1,148 +1,186 @@
-import { SEO } from '../components/SEO';
-import { StructuredData } from '../components/StructuredData';
-import { FAQStructuredData } from '../components/FAQStructuredData';
-import { Button } from '../components/ui/button';
-import { LanguageSwitcher } from '../components/LanguageSwitcher';
-import { useTranslation } from 'react-i18next';
-import placeholderImage from '../assets/images/landing-page-placeholder.webp';
-import calendarImage from '../assets/images/calendar-image-placeholder.png';
-import '../styles/cards.css';
-import { Toggle } from '../components/ui/toggle';
-import { useState } from 'react';
-import { Check } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { SEO } from "../components/SEO";
+import { StructuredData } from "../components/StructuredData";
+import { FAQStructuredData } from "../components/FAQStructuredData";
+import { Button } from "../components/ui/button";
+import { LanguageSwitcher } from "../components/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
+import placeholderImage from "../assets/images/landing-page-placeholder.webp";
+import calendarImage from "../assets/images/calendar-image-placeholder.png";
+import "../styles/cards.css";
+import { Toggle } from "../components/ui/toggle";
+import { useState } from "react";
+import { Check } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function LandingPage() {
   const { t } = useTranslation();
   const [isYearly, setIsYearly] = useState(false);
-  
+
   // SEO metadata for this page
   const seoData = {
-    title: 'Punctual Booking - Streamline Your Appointment Scheduling',
-    description: 'Punctual Booking helps businesses manage appointments efficiently with our powerful SaaS platform. Try it free today!',
-    keywords: 'appointment scheduling, booking software, calendar management, scheduling platform, business scheduling',
-    ogTitle: 'Punctual Booking - Streamline Your Appointment Scheduling',
-    ogDescription: 'Manage appointments efficiently with our powerful SaaS platform. Try it free today!',
-    ogImage: '/images/og-landing-page.jpg',
-    canonicalUrl: 'https://punctual-booking.com',
+    title: "Punctual Booking - Streamline Your Appointment Scheduling",
+    description:
+      "Punctual Booking helps businesses manage appointments efficiently with our powerful SaaS platform. Try it free today!",
+    keywords:
+      "appointment scheduling, booking software, calendar management, scheduling platform, business scheduling",
+    ogTitle: "Punctual Booking - Streamline Your Appointment Scheduling",
+    ogDescription:
+      "Manage appointments efficiently with our powerful SaaS platform. Try it free today!",
+    ogImage: "/images/og-landing-page.jpg",
+    canonicalUrl: "https://punctual-booking.com",
   };
 
   // Structured data for rich snippets
   const structuredData = {
-    name: 'Punctual Booking',
-    description: 'Appointment scheduling software for businesses',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Web',
+    name: "Punctual Booking",
+    description: "Appointment scheduling software for businesses",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
     offers: {
-      '@type': 'Offer',
-      price: '19.99',
-      priceCurrency: 'USD',
-      priceValidUntil: '2024-12-31',
+      "@type": "Offer",
+      price: "19.99",
+      priceCurrency: "USD",
+      priceValidUntil: "2024-12-31",
     },
     aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      ratingCount: '1024',
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      ratingCount: "1024",
     },
   };
 
   // FAQ data for structured data
   const faqData = [
     {
-      question: t('faq.question1', 'How does the free trial work?'),
-      answer: t('faq.answer1', 'Our 14-day free trial gives you full access to all features. No credit card required to start.'),
+      question: t("faq.question1", "How does the free trial work?"),
+      answer: t(
+        "faq.answer1",
+        "Our 14-day free trial gives you full access to all features. No credit card required to start."
+      ),
     },
     {
-      question: t('faq.question2', 'Can I cancel my subscription anytime?'),
-      answer: t('faq.answer2', 'Yes, you can cancel your subscription at any time with no cancellation fees.'),
+      question: t("faq.question2", "Can I cancel my subscription anytime?"),
+      answer: t(
+        "faq.answer2",
+        "Yes, you can cancel your subscription at any time with no cancellation fees."
+      ),
     },
     {
-      question: t('faq.question3', 'Is my data secure?'),
-      answer: t('faq.answer3', 'We use industry-standard encryption and security practices to keep your data safe.'),
+      question: t("faq.question3", "Is my data secure?"),
+      answer: t(
+        "faq.answer3",
+        "We use industry-standard encryption and security practices to keep your data safe."
+      ),
     },
   ];
 
   // Example testimonials data
   const testimonialsData = [
     {
-      quote: t('testimonials.quote1', '"Punctual Booking has transformed how we manage appointments. Our no-show rate has dropped by 60%!"'),
-      name: t('testimonials.name1', 'MARIA SANTOS'),
-      position: t('testimonials.position1', 'Salon Owner'),
+      quote: t(
+        "testimonials.quote1",
+        '"Punctual Booking has transformed how we manage appointments. Our no-show rate has dropped by 60%!"'
+      ),
+      name: t("testimonials.name1", "MARIA SANTOS"),
+      position: t("testimonials.position1", "Salon Owner"),
     },
     {
-      quote: t('testimonials.quote2', '"The platform is intuitive and easy to use. Our team loves it!"'),
-      name: t('testimonials.name2', 'JOHN DOE'),
-      position: t('testimonials.position2', 'Business Manager'),
+      quote: t(
+        "testimonials.quote2",
+        '"The platform is intuitive and easy to use. Our team loves it!"'
+      ),
+      name: t("testimonials.name2", "JOHN DOE"),
+      position: t("testimonials.position2", "Business Manager"),
     },
     {
-      quote: t('testimonials.quote3', '"Punctual Booking has transformed how we manage appointments. Our no-show rate has dropped by 60%!"'),
-      name: t('testimonials.name3', 'MARIA SANTOS'),
-      position: t('testimonials.position3', 'Salon Owner'),
+      quote: t(
+        "testimonials.quote3",
+        '"Punctual Booking has transformed how we manage appointments. Our no-show rate has dropped by 60%!"'
+      ),
+      name: t("testimonials.name3", "MARIA SANTOS"),
+      position: t("testimonials.position3", "Salon Owner"),
     },
     {
-      quote: t('testimonials.quote4', '"Punctual Booking has transformed how we manage appointments. Our no-show rate has dropped by 60%!"'),
-      name: t('testimonials.name4', 'MARIA SANTOS'),
-      position: t('testimonials.position4', 'Salon Owner'),
+      quote: t(
+        "testimonials.quote4",
+        '"Punctual Booking has transformed how we manage appointments. Our no-show rate has dropped by 60%!"'
+      ),
+      name: t("testimonials.name4", "MARIA SANTOS"),
+      position: t("testimonials.position4", "Salon Owner"),
     },
     {
-      quote: t('testimonials.quote5', '"The automated reminders and easy rescheduling have made our clinic much more efficient."'),
-      name: t('testimonials.name5', 'DAVID SILVA'),
-      position: t('testimonials.position5', 'Medical Director'),
+      quote: t(
+        "testimonials.quote5",
+        '"The automated reminders and easy rescheduling have made our clinic much more efficient."'
+      ),
+      name: t("testimonials.name5", "DAVID SILVA"),
+      position: t("testimonials.position5", "Medical Director"),
     },
     {
-      quote: t('testimonials.quote6', '"Best investment we made for our business. The customer support is exceptional!"'),
-      name: t('testimonials.name6', 'ANA COSTA'),
-      position: t('testimonials.position6', 'Restaurant Owner'),
-    }
+      quote: t(
+        "testimonials.quote6",
+        '"Best investment we made for our business. The customer support is exceptional!"'
+      ),
+      name: t("testimonials.name6", "ANA COSTA"),
+      position: t("testimonials.position6", "Restaurant Owner"),
+    },
     // Add more testimonials as needed
   ];
 
   const pricingPlans = [
     {
-      name: t('pricing.starter.title', 'Starter'),
+      name: t("pricing.starter.title", "Starter"),
       price: {
-        monthly: 29,
-        yearly: 24,
+        monthly: 10,
+        yearly: 8,
       },
-      description: t('pricing.starter.description', 'Perfect for small businesses'),
+      description: t(
+        "pricing.starter.description",
+        "Perfect for small businesses"
+      ),
       features: [
-        t('pricing.starter.features.0', 'Up to 50 appointments/month'),
-        t('pricing.starter.features.1', 'Basic email support'),
-        t('pricing.starter.features.2', 'Calendar integration'),
+        t("pricing.starter.features.0", "Up to 50 appointments/month"),
+        t("pricing.starter.features.1", "Basic email support"),
+        t("pricing.starter.features.2", "Calendar integration"),
+        t("pricing.starter.features.3", "SMS and email reminders"),
       ],
-      cta: t('pricing.starter.cta', 'Get Started'),
+      cta: t("pricing.starter.cta", "Get Started"),
       highlighted: false,
     },
     {
-      name: t('pricing.professional.title', 'Professional'),
+      name: t("pricing.professional.title", "Professional"),
       price: {
-        monthly: 79,
-        yearly: 64,
+        monthly: 25,
+        yearly: 20,
       },
-      description: t('pricing.professional.description', 'Ideal for growing businesses'),
+      description: t(
+        "pricing.professional.description",
+        "Ideal for growing businesses"
+      ),
       features: [
-        t('pricing.professional.features.0', 'Unlimited appointments'),
-        t('pricing.professional.features.1', 'Priority support'),
-        t('pricing.professional.features.2', 'Advanced analytics'),
-        t('pricing.professional.features.3', 'Team management'),
+        t("pricing.professional.features.0", "Everything in Starter"),
+        t("pricing.professional.features.1", "Unlimited appointments"),
+        t("pricing.professional.features.2", "Priority support"),
+        t("pricing.professional.features.3", "Team management"),
       ],
-      cta: t('pricing.professional.cta', 'Start Free Trial'),
+      cta: t("pricing.professional.cta", "Start Free Trial"),
       highlighted: true,
     },
     {
-      name: t('pricing.enterprise.title', 'Enterprise'),
+      name: t("pricing.enterprise.title", "Enterprise"),
       price: {
-        monthly: 199,
-        yearly: 159,
+        monthly: 50,
+        yearly: 40,
       },
-      description: t('pricing.enterprise.description', 'For large organizations'),
+      description: t("pricing.enterprise.description", "For bigger businesses"),
       features: [
-        t('pricing.enterprise.features.0', 'Custom integrations'),
-        t('pricing.enterprise.features.1', 'Dedicated support'),
-        t('pricing.enterprise.features.2', 'Advanced security'),
-        t('pricing.enterprise.features.3', 'API access'),
+        t("pricing.enterprise.features.0", "Everything in Professional"),
+        t("pricing.enterprise.features.1", "Custom integrations"),
+        t("pricing.enterprise.features.2", "Dedicated support"),
+        t("pricing.enterprise.features.3", "Multi-location management"),
+        t("pricing.enterprise.features.4", "Advanced analytics"),
       ],
-      cta: t('pricing.enterprise.cta', 'Contact Sales'),
+      cta: t("pricing.enterprise.cta", "Contact Sales"),
       highlighted: false,
     },
   ];
@@ -164,34 +202,44 @@ export function LandingPage() {
                 <h1 className="font-primary text-5xl md:text-7xl lg:text-8xl leading-none tracking-tight">
                   PUNCTUAL
                 </h1>
-                <h2 className="font-secondary text-xl md:text-2xl text-gray-700">
-                  {t('hero.subtitle', 'BOOKING MANAGEMENT')}
+                <h2 className="font-secondary text-muted-foreground text-xl md:text-2xl text-gray-700">
+                  {t("hero.subtitle", "BOOKING MANAGEMENT")}
                 </h2>
-                <p className="font-secondary text-gray-600 max-w-[500px]">
-                  {t('hero.description', 'Streamline your appointment scheduling with our powerful booking platform. Reduce no-shows and grow your business.')}
+                <p className="font-secondary text-muted-foreground text-gray-600 max-w-[500px]">
+                  {t(
+                    "hero.description",
+                    "Streamline your appointment scheduling with our powerful booking platform. Reduce no-shows and grow your business."
+                  )}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-                  <Button 
-                    size="lg" 
-                    asChild 
+                  <Button
+                    size="lg"
+                    asChild
                     className="font-bold shadow-lg hover:shadow-xl"
                   >
-                    <Link to="/register">{t('hero.cta.trial', 'Start Free Trial')}</Link>
+                    <Link to="/register">
+                      {t("hero.cta.trial", "Start Free Trial")}
+                    </Link>
                   </Button>
-                  <Button size="lg" variant="outline" asChild className="font-secondary">
-                    <a href="#demo">{t('hero.cta.demo', 'Watch Demo')}</a>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    asChild
+                    className="font-secondary"
+                  >
+                    <a href="#demo">{t("hero.cta.demo", "Watch Demo")}</a>
                   </Button>
                 </div>
               </div>
               <div className="hidden md:flex justify-center">
                 {/* Image placeholder - you can replace this with your actual image */}
                 <div className="aspect-[4/3] bg-gray-200 rounded-md overflow-hidden max-w-[500px]">
-                  <img 
-                    src={placeholderImage} 
-                    alt="Booking management interface" 
+                  <img
+                    src={placeholderImage}
+                    alt="Booking management interface"
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.style.display = "none";
                     }}
                   />
                 </div>
@@ -205,12 +253,12 @@ export function LandingPage() {
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex justify-center">
               <div className="bg-white/30 backdrop-blur-md rounded-lg shadow-lg overflow-hidden max-w-[1000px]">
-                <img 
-                  src={calendarImage} 
-                  alt="Calendar interface" 
+                <img
+                  src={calendarImage}
+                  alt="Calendar interface"
                   className="w-full h-auto object-cover"
                   onError={(e) => {
-                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.style.display = "none";
                   }}
                 />
               </div>
@@ -222,35 +270,82 @@ export function LandingPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background pointer-events-none" />
           <div className="container px-4 md:px-6 mx-auto relative">
             <div className="flex flex-col items-center text-center space-y-4 mb-12">
-              <h2 className="font-primary text-3xl md:text-4xl tracking-tight">{t('features.title', 'KEY FEATURES')}</h2>
+              <h2 className="font-primary text-3xl md:text-4xl tracking-tight">
+                {t("features.title", "KEY FEATURES")}
+              </h2>
               <p className="font-secondary text-muted-foreground max-w-[600px]">
-                {t('features.subtitle', 'Everything you need to manage appointments efficiently')}
+                {t(
+                  "features.subtitle",
+                  "Everything you need to manage appointments efficiently"
+                )}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="glassmorphism-card p-8 rounded-xl">
-                <h3 className="font-primary text-xl mb-4">{t('features.onlineBooking.title', 'ONLINE BOOKING')}</h3>
-                <p className="font-secondary text-muted-foreground">{t('features.onlineBooking.description', 'Allow clients to book appointments 24/7 from any device')}</p>
+                <h3 className="font-primary text-xl mb-4">
+                  {t("features.onlineBooking.title", "ONLINE BOOKING")}
+                </h3>
+                <p className="font-secondary text-muted-foreground">
+                  {t(
+                    "features.onlineBooking.description",
+                    "Allow clients to book appointments 24/7 from any device"
+                  )}
+                </p>
               </div>
               <div className="glassmorphism-card p-8 rounded-xl">
-                <h3 className="font-primary text-xl mb-4">{t('features.reminders.title', 'AUTOMATED REMINDERS')}</h3>
-                <p className="font-secondary text-muted-foreground">{t('features.reminders.description', 'Reduce no-shows with SMS and email reminders')}</p>
+                <h3 className="font-primary text-xl mb-4">
+                  {t("features.reminders.title", "AUTOMATED REMINDERS")}
+                </h3>
+                <p className="font-secondary text-muted-foreground">
+                  {t(
+                    "features.reminders.description",
+                    "Reduce no-shows with SMS and email reminders"
+                  )}
+                </p>
               </div>
               <div className="glassmorphism-card p-8 rounded-xl">
-                <h3 className="font-primary text-xl mb-4">{t('features.team.title', 'TEAM MANAGEMENT')}</h3>
-                <p className="font-secondary text-muted-foreground">{t('features.team.description', 'Manage staff schedules and availability')}</p>
+                <h3 className="font-primary text-xl mb-4">
+                  {t("features.team.title", "TEAM MANAGEMENT")}
+                </h3>
+                <p className="font-secondary text-muted-foreground">
+                  {t(
+                    "features.team.description",
+                    "Manage staff schedules and availability"
+                  )}
+                </p>
               </div>
               <div className="glassmorphism-card p-8 rounded-xl">
-                <h3 className="font-primary text-xl mb-4">{t('features.analytics.title', 'ANALYTICS')}</h3>
-                <p className="font-secondary text-muted-foreground">{t('features.analytics.description', 'Track performance with detailed reports')}</p>
+                <h3 className="font-primary text-xl mb-4">
+                  {t("features.analytics.title", "ANALYTICS")}
+                </h3>
+                <p className="font-secondary text-muted-foreground">
+                  {t(
+                    "features.analytics.description",
+                    "Track performance with detailed reports"
+                  )}
+                </p>
               </div>
               <div className="glassmorphism-card p-8 rounded-xl">
-                <h3 className="font-primary text-xl mb-4">{t('features.customization.title', 'CUSTOMIZATION')}</h3>
-                <p className="font-secondary text-muted-foreground">{t('features.customization.description', 'Tailor the platform to your business needs')}</p>
+                <h3 className="font-primary text-xl mb-4">
+                  {t("features.customization.title", "CUSTOMIZATION")}
+                </h3>
+                <p className="font-secondary text-muted-foreground">
+                  {t(
+                    "features.customization.description",
+                    "Tailor the platform to your business needs"
+                  )}
+                </p>
               </div>
               <div className="glassmorphism-card p-8 rounded-xl">
-                <h3 className="font-primary text-xl mb-4">{t('features.payment.title', 'PAYMENT PROCESSING')}</h3>
-                <p className="font-secondary text-muted-foreground">{t('features.payment.description', 'Accept payments and deposits at time of booking')}</p>
+                <h3 className="font-primary text-xl mb-4">
+                  {t("features.payment.title", "PAYMENT PROCESSING")}
+                </h3>
+                <p className="font-secondary text-muted-foreground">
+                  {t(
+                    "features.payment.description",
+                    "Accept payments and deposits at time of booking"
+                  )}
+                </p>
               </div>
             </div>
           </div>
@@ -259,9 +354,11 @@ export function LandingPage() {
         <section className="testimonials py-20 relative overflow-hidden">
           <div className="container px-4 md:px-6 mx-auto relative">
             <div className="flex flex-col items-center text-center space-y-4 mb-12">
-              <h2 className="font-primary text-3xl md:text-4xl tracking-tight">{t('testimonials.title', 'TESTIMONIALS')}</h2>
+              <h2 className="font-primary text-3xl md:text-4xl tracking-tight">
+                {t("testimonials.title", "TESTIMONIALS")}
+              </h2>
               <p className="font-secondary text-muted-foreground max-w-[600px]">
-                {t('testimonials.subtitle', 'Trusted by businesses worldwide')}
+                {t("testimonials.subtitle", "Trusted by businesses worldwide")}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -272,11 +369,16 @@ export function LandingPage() {
                   </p>
                   <div className="flex items-center">
                     <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
-                      {testimonial.name.split(' ').map(n => n[0]).join('')}
+                      {testimonial.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
                     </div>
                     <div className="ml-4">
                       <p className="font-primary text-sm">{testimonial.name}</p>
-                      <p className="font-secondary text-sm text-muted-foreground">{testimonial.position}</p>
+                      <p className="font-secondary text-sm text-muted-foreground">
+                        {testimonial.position}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -288,15 +390,24 @@ export function LandingPage() {
         <section id="pricing" className="py-20 bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-primary mb-4">{t('pricing.title', 'Simple, Transparent Pricing')}</h2>
+              <h2 className="text-4xl font-primary mb-4">
+                {t("pricing.title", "Simple, Transparent Pricing")}
+              </h2>
               <p className="text-xl text-muted-foreground font-secondary">
-                {t('pricing.subtitle', 'Choose the plan that best fits your needs')}
+                {t(
+                  "pricing.subtitle",
+                  "Choose the plan that best fits your needs"
+                )}
               </p>
             </div>
 
             <div className="flex justify-center items-center gap-4 mb-12">
-              <span className={`text-sm ${!isYearly ? 'text-primary font-bold' : 'text-muted-foreground'}`}>
-                {t('pricing.monthly', 'Monthly')}
+              <span
+                className={`text-sm ${
+                  !isYearly ? "text-primary font-bold" : "text-muted-foreground"
+                }`}
+              >
+                {t("pricing.monthly", "Monthly")}
               </span>
               <Toggle
                 pressed={isYearly}
@@ -305,12 +416,16 @@ export function LandingPage() {
               >
                 <span
                   className={`absolute h-5 w-5 rounded-full bg-white shadow-lg transition-transform duration-200 ease-in-out ${
-                    isYearly ? 'translate-x-[40%]' : '-translate-x-[40%]'
+                    isYearly ? "translate-x-[40%]" : "-translate-x-[40%]"
                   }`}
                 />
               </Toggle>
-              <span className={`text-sm ${isYearly ? 'text-primary font-bold' : 'text-muted-foreground'}`}>
-                {t('pricing.yearly', 'Yearly')}
+              <span
+                className={`text-sm ${
+                  isYearly ? "text-primary font-bold" : "text-muted-foreground"
+                }`}
+              >
+                {t("pricing.yearly", "Yearly")}
               </span>
             </div>
 
@@ -319,7 +434,7 @@ export function LandingPage() {
                 <div
                   key={plan.name}
                   className={`glassmorphism-card p-8 rounded-lg flex flex-col ${
-                    plan.highlighted ? 'border-2 border-primary' : ''
+                    plan.highlighted ? "border-2 border-primary" : ""
                   }`}
                 >
                   <div>
@@ -329,15 +444,19 @@ export function LandingPage() {
                         <span className="text-4xl font-bold">
                           ${isYearly ? plan.price.yearly : plan.price.monthly}
                         </span>
-                        <span className="text-muted-foreground">/{t('pricing.perMonth', 'month')}</span>
+                        <span className="text-muted-foreground">
+                          /{t("pricing.perMonth", "month")}
+                        </span>
                         {isYearly && (
                           <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
-                            {t('pricing.save', 'Save 20%')}
+                            {t("pricing.save", "Save 20%")}
                           </span>
                         )}
                       </div>
                     </div>
-                    <p className="text-muted-foreground mb-6">{plan.description}</p>
+                    <p className="text-muted-foreground mb-6">
+                      {plan.description}
+                    </p>
                     <ul className="space-y-4 mb-8">
                       {plan.features.map((feature) => (
                         <li key={feature} className="flex items-center gap-2">
@@ -349,13 +468,129 @@ export function LandingPage() {
                   </div>
                   <Button
                     asChild
-                    variant={plan.highlighted ? 'default' : 'secondary'}
+                    variant={plan.highlighted ? "default" : "secondary"}
                     className="w-full mt-auto"
                   >
                     <Link to="/register">{plan.cta}</Link>
                   </Button>
                 </div>
               ))}
+            </div>
+
+            {/* Add-on Section */}
+            <div className="mt-16">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-primary mb-2">
+                  {t("pricing.addon.title", "Power-Up Your Plan")}
+                </h3>
+                <p className="text-muted-foreground">
+                  {t(
+                    "pricing.addon.subtitle",
+                    "Add premium features to enhance your experience"
+                  )}
+                </p>
+              </div>
+
+              <div className="max-w-2xl mx-auto">
+                <div className="glassmorphism-card p-8 rounded-lg">
+                  <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <svg
+                          className="h-6 w-6 text-primary"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M19.5 5.5V18.5C19.5 19.3284 18.8284 20 18 20H6C5.17157 20 4.5 19.3284 4.5 18.5V5.5C4.5 4.67157 5.17157 4 6 4H18C18.8284 4 19.5 4.67157 19.5 5.5Z"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M9 12C9 13.6569 7.65685 15 6 15C4.34315 15 3 13.6569 3 12C3 10.3431 4.34315 9 6 9C7.65685 9 9 10.3431 9 12Z"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                          />
+                          <path
+                            d="M21 12C21 13.6569 19.6569 15 18 15C16.3431 15 15 13.6569 15 12C15 10.3431 16.3431 9 18 9C19.6569 9 21 10.3431 21 12Z"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                          />
+                          <path
+                            d="M9 12H15"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        <h4 className="text-xl font-primary">
+                          {t(
+                            "pricing.addon.aiCallAssistant.title",
+                            "AI Call Assistant"
+                          )}
+                        </h4>
+                      </div>
+                      <p className="text-muted-foreground mb-4">
+                        {t(
+                          "pricing.addon.aiCallAssistant.description",
+                          "Advanced AI that handles appointment calls, confirmations, and reminders automatically"
+                        )}
+                      </p>
+                      <ul className="space-y-3">
+                        <li className="flex items-center gap-2">
+                          <Check className="h-5 w-5 text-primary" />
+                          <span>
+                            {t(
+                              "pricing.addon.aiCallAssistant.feature1",
+                              "24/7 automated call handling"
+                            )}
+                          </span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <Check className="h-5 w-5 text-primary" />
+                          <span>
+                            {t(
+                              "pricing.addon.aiCallAssistant.feature2",
+                              "Natural voice conversations"
+                            )}
+                          </span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <Check className="h-5 w-5 text-primary" />
+                          <span>
+                            {t(
+                              "pricing.addon.aiCallAssistant.feature3",
+                              "Multilingual support"
+                            )}
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <div className="mb-3 text-center">
+                        <span className="text-3xl font-bold">
+                          {t("pricing.addon.aiCallAssistant.price", "€25")}
+                        </span>
+                        <span className="text-muted-foreground">
+                          {t("pricing.addon.aiCallAssistant.period", "/month")}
+                        </span>
+                      </div>
+                      <Button className="min-w-[150px]" asChild>
+                        <Link to="/register?addon=ai-call-assistant">
+                          {t(
+                            "pricing.addon.aiCallAssistant.cta",
+                            "Add to Plan"
+                          )}
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -364,16 +599,23 @@ export function LandingPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background pointer-events-none" />
           <div className="container px-4 md:px-6 mx-auto relative">
             <div className="flex flex-col items-center text-center space-y-4 mb-12">
-              <h2 className="font-primary text-3xl md:text-4xl tracking-tight">{t('faq.title', 'FAQ')}</h2>
+              <h2 className="font-primary text-3xl md:text-4xl tracking-tight">
+                {t("faq.title", "FAQ")}
+              </h2>
               <p className="font-secondary text-muted-foreground max-w-[600px]">
-                {t('faq.subtitle', 'Find answers to common questions about Punctual Booking')}
+                {t(
+                  "faq.subtitle",
+                  "Find answers to common questions about Punctual Booking"
+                )}
               </p>
             </div>
             <div className="max-w-3xl mx-auto space-y-6">
               {faqData.map((faq, index) => (
                 <div key={index} className="glassmorphism-card p-8 rounded-xl">
                   <h3 className="font-primary text-xl mb-4">{faq.question}</h3>
-                  <p className="font-secondary text-muted-foreground">{faq.answer}</p>
+                  <p className="font-secondary text-muted-foreground">
+                    {faq.answer}
+                  </p>
                 </div>
               ))}
             </div>
@@ -383,17 +625,28 @@ export function LandingPage() {
         <section id="about" className="py-20 bg-background">
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center text-center space-y-4 mb-12">
-              <h2 className="font-primary text-3xl md:text-4xl tracking-tight">{t('about.title', 'ABOUT US')}</h2>
+              <h2 className="font-primary text-3xl md:text-4xl tracking-tight">
+                {t("about.title", "ABOUT US")}
+              </h2>
               <p className="font-secondary text-muted-foreground max-w-[600px]">
-                {t('about.subtitle', 'Our mission is to help businesses save time and improve customer satisfaction')}
+                {t(
+                  "about.subtitle",
+                  "Our mission is to help businesses save time and improve customer satisfaction"
+                )}
               </p>
             </div>
             <div className="max-w-3xl mx-auto text-center">
               <p className="font-secondary text-muted-foreground mb-4">
-                {t('about.description1', 'Punctual Booking was founded in 2023 with a simple goal: to make appointment scheduling effortless for businesses of all sizes. Our team of experienced developers and business experts has created a platform that combines powerful features with an intuitive interface.')}
+                {t(
+                  "about.description1",
+                  "Punctual Booking was founded in 2023 with a simple goal: to make appointment scheduling effortless for businesses of all sizes. Our team of experienced developers and business experts has created a platform that combines powerful features with an intuitive interface."
+                )}
               </p>
               <p className="font-secondary text-muted-foreground">
-                {t('about.description2', 'We\'re committed to continuous improvement and innovation, regularly adding new features based on customer feedback. Our customer success team provides personalized support to ensure you get the most out of our platform.')}
+                {t(
+                  "about.description2",
+                  "We're committed to continuous improvement and innovation, regularly adding new features based on customer feedback. Our customer success team provides personalized support to ensure you get the most out of our platform."
+                )}
               </p>
             </div>
           </div>
@@ -402,18 +655,25 @@ export function LandingPage() {
         <section id="signup" className="py-20 bg-primary/10 dark:bg-primary/5">
           <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center text-center space-y-4 mb-8">
-              <h2 className="font-primary text-3xl md:text-4xl tracking-tight">{t('cta.title', 'READY TO GET STARTED?')}</h2>
+              <h2 className="font-primary text-3xl md:text-4xl tracking-tight">
+                {t("cta.title", "READY TO GET STARTED?")}
+              </h2>
               <p className="font-secondary text-muted-foreground max-w-[600px]">
-                {t('cta.subtitle', 'Join thousands of businesses that trust Punctual Booking for their scheduling needs')}
+                {t(
+                  "cta.subtitle",
+                  "Join thousands of businesses that trust Punctual Booking for their scheduling needs"
+                )}
               </p>
             </div>
             <div className="flex justify-center">
-              <Button 
-                size="lg" 
-                asChild 
+              <Button
+                size="lg"
+                asChild
                 className="font-secondary bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <Link to="/register">{t('cta.button', 'Start Your 14-Day Free Trial')}</Link>
+                <Link to="/register">
+                  {t("cta.button", "Start Your 14-Day Free Trial")}
+                </Link>
               </Button>
             </div>
           </div>
@@ -424,52 +684,163 @@ export function LandingPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
               <div className="flex flex-col items-center">
                 <div className="flex items-center space-x-2 mb-4">
-                  <svg className="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  <svg
+                    className="h-6 w-6 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    ></path>
                   </svg>
-                  <span className="font-primary text-xl tracking-tight">PUNCTUAL</span>
+                  <span className="font-primary text-xl tracking-tight">
+                    PUNCTUAL
+                  </span>
                 </div>
                 <p className="font-secondary text-muted-foreground">
-                  {t('footer.description', 'Streamline your appointment scheduling with our powerful booking platform')}
+                  {t(
+                    "footer.description",
+                    "Streamline your appointment scheduling with our powerful booking platform"
+                  )}
                 </p>
                 <div className="mt-4">
                   <LanguageSwitcher />
                 </div>
               </div>
               <div>
-                <h3 className="font-primary mb-4">{t('footer.product', 'PRODUCT')}</h3>
+                <h3 className="font-primary mb-4">
+                  {t("footer.product", "PRODUCT")}
+                </h3>
                 <ul className="space-y-2 font-secondary">
-                  <li><a href="#features" className="text-muted-foreground hover:text-foreground">{t('nav.features', 'Features')}</a></li>
-                  <li><a href="#pricing" className="text-muted-foreground hover:text-foreground">{t('nav.pricing', 'Pricing')}</a></li>
-                  <li><a href="#" className="text-muted-foreground hover:text-foreground">{t('footer.integrations', 'Integrations')}</a></li>
-                  <li><a href="#" className="text-muted-foreground hover:text-foreground">{t('footer.api', 'API')}</a></li>
+                  <li>
+                    <a
+                      href="#features"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {t("nav.features", "Features")}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#pricing"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {t("nav.pricing", "Pricing")}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {t("footer.integrations", "Integrations")}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {t("footer.api", "API")}
+                    </a>
+                  </li>
                 </ul>
               </div>
               <div>
-                <h3 className="font-primary mb-4">{t('footer.company', 'COMPANY')}</h3>
+                <h3 className="font-primary mb-4">
+                  {t("footer.company", "COMPANY")}
+                </h3>
                 <ul className="space-y-2 font-secondary">
-                  <li><a href="#about" className="text-muted-foreground hover:text-foreground">{t('nav.about', 'About')}</a></li>
-                  <li><a href="#" className="text-muted-foreground hover:text-foreground">{t('nav.blog', 'Blog')}</a></li>
-                  <li><a href="#" className="text-muted-foreground hover:text-foreground">{t('footer.careers', 'Careers')}</a></li>
-                  <li><a href="#contact" className="text-muted-foreground hover:text-foreground">{t('footer.contact', 'Contact')}</a></li>
+                  <li>
+                    <a
+                      href="#about"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {t("nav.about", "About")}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {t("nav.blog", "Blog")}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {t("footer.careers", "Careers")}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#contact"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {t("footer.contact", "Contact")}
+                    </a>
+                  </li>
                 </ul>
               </div>
               <div>
-                <h3 className="font-primary mb-4">{t('footer.legal', 'LEGAL')}</h3>
+                <h3 className="font-primary mb-4">
+                  {t("footer.legal", "LEGAL")}
+                </h3>
                 <ul className="space-y-2 font-secondary">
-                  <li><a href="#" className="text-muted-foreground hover:text-foreground">{t('footer.privacy', 'Privacy Policy')}</a></li>
-                  <li><a href="#" className="text-muted-foreground hover:text-foreground">{t('footer.terms', 'Terms of Service')}</a></li>
-                  <li><a href="#" className="text-muted-foreground hover:text-foreground">{t('footer.cookie', 'Cookie Policy')}</a></li>
-                  <li><a href="#" className="text-muted-foreground hover:text-foreground">{t('footer.gdpr', 'GDPR')}</a></li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {t("footer.privacy", "Privacy Policy")}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {t("footer.terms", "Terms of Service")}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {t("footer.cookie", "Cookie Policy")}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {t("footer.gdpr", "GDPR")}
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
             <div className="mt-12 pt-8 border-t text-center text-muted-foreground">
-              <p className="font-secondary">{t('footer.copyright', '© 2024 Punctual Booking. All rights reserved.')}</p>
+              <p className="font-secondary">
+                {t(
+                  "footer.copyright",
+                  "© 2024 Punctual Booking. All rights reserved."
+                )}
+              </p>
             </div>
           </div>
         </footer>
       </main>
     </>
   );
-} 
+}
